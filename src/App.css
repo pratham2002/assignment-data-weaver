@@ -46,6 +46,9 @@
   transition: transform 0.2s;
 }
 
+.book-card:hover {
+  transform: translateY(-5px);
+}
 .book-card h2 {
   font-size: 1.5rem;
   margin: 0;

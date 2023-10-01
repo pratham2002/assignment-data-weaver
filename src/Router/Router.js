@@ -8,6 +8,7 @@ function Router() {
     <Routes>
       <Route path="/" element={<Homepage />} />
       <Route path="/add" element={<Homepage />} />
+      <Route path="/edit" element={<Homepage />} />
       <Route path="*" element={<Error404Page />} />
     </Routes>
   );

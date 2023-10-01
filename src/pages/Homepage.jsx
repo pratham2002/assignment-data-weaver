@@ -30,6 +30,7 @@ export default function Homepage() {
   return (
     <div>
       <TopBar />
+      <hr />
       <div className="search-section">
         <div
           style={{
@@ -75,31 +76,6 @@ export default function Homepage() {
         }}
       >
         <p>Total Results:{books?.results?.pagination?.totalElements}</p>
-        {books?.results?.pagination?.totalPages > 1 && (
-          <div style={{ display: "flex", gap: "5px", alignItems: "center" }}>
-            <button
-              style={{ height: "fit-content" }}
-              onClick={() => {
-                setPage((p) => p - 1);
-              }}
-              disabled={page == 1}
-            >
-              Prev
-            </button>
-
-            <p style={{ fontSize: "14px" }}>{page}</p>
-
-            <button
-              style={{ height: "fit-content" }}
-              onClick={() => {
-                setPage((p) => p + 1);
-              }}
-              disabled={page == books?.results?.pagination?.totalPages}
-            >
-              Next
-            </button>
-          </div>
-        )}
       </div>
 
       <div
@@ -119,6 +95,43 @@ export default function Homepage() {
         {books?.results?.data?.map((e) => {
           return <BookItem book={e} />;
         })}
+      </div>
+      <div
+        style={{
+          display: "flex",
+          alignItems: "center",
+          marginBlock: "5px",
+          justifyContent: "flex-end",
+          flexWrap: "wrap",
+        }}
+      >
+        {books?.results?.pagination?.totalPages > 1 && (
+          <div style={{ display: "flex", gap: "5px", alignItems: "center" }}>
+            <button
+              style={{ height: "fit-content" }}
+              onClick={() => {
+                setPage((p) => p - 1);
+              }}
+              disabled={page == 1}
+            >
+              Prev
+            </button>
+
+            <p style={{ fontSize: "14px" }}>
+              {page} of {books?.results?.pagination?.totalPages}
+            </p>
+
+            <button
+              style={{ height: "fit-content" }}
+              onClick={() => {
+                setPage((p) => p + 1);
+              }}
+              disabled={page == books?.results?.pagination?.totalPages}
+            >
+              Next
+            </button>
+          </div>
+        )}
       </div>
     </div>
   );
