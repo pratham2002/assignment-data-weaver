@@ -1,6 +1,8 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
 
 export default function TopBar() {
+  const navigate = useNavigate();
   return (
     <div
       style={{
@@ -11,8 +13,9 @@ export default function TopBar() {
       }}
     >
       <div
+        onClick={() => navigate("/")}
         className="header-container"
-        style={{ display: "flex", alignItems: "flex-end" }}
+        style={{ display: "flex", alignItems: "flex-end", cursor: "pointer" }}
       >
         <img
           src="https://img.freepik.com/free-vector/hand-drawn-flat-design-stack-books_23-2149342941.jpg"

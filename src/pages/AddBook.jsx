@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useLocation, useNavigate } from "react-router-dom";
+import TopBar from "../componenets/TopBar";
 import "../css/addData.css";
 import {
   addBookInit,
@@ -59,93 +60,107 @@ export default function AddBook({ edit }) {
   }, [addBook]);
 
   return (
-    <div className="add-form-container">
-      <h2>Add Data</h2>
-      <form onSubmit={handleSubmit}>
-        <div className="add-form-container">
-          <label htmlFor="title">Title:</label>
-          <input
-            type="text"
-            id="title"
-            name="title"
-            value={formData.title}
-            onChange={handleChange}
-            required
-          />
-        </div>
-        <div className="add-form-container">
-          <label htmlFor="author">Author:</label>
-          <input
-            type="text"
-            id="author"
-            name="author"
-            value={formData.author}
-            onChange={handleChange}
-            required
-          />
-        </div>
-        <div className="add-form-container">
-          <label htmlFor="year">Year:</label>
-          <input
-            type="text"
-            id="year"
-            name="year"
-            value={formData.year}
-            onChange={handleChange}
-            required
-          />
-        </div>
+    <>
+      <TopBar />
+      <hr />
+      <div className="add-form-container">
+        <h2>{edit ? "Edit" : "Add"} Data</h2>
+        <form onSubmit={handleSubmit}>
+          <div className="add-form-container">
+            <label htmlFor="title">Title:</label>
+            <input
+              type="text"
+              id="title"
+              name="title"
+              value={formData.title}
+              onChange={handleChange}
+              required
+            />
+          </div>
+          <div className="add-form-container">
+            <label htmlFor="author">Author:</label>
+            <input
+              type="text"
+              id="author"
+              name="author"
+              value={formData.author}
+              onChange={handleChange}
+              required
+            />
+          </div>
+          <div className="add-form-container">
+            <label htmlFor="year">Year:</label>
+            <input
+              type="text"
+              id="year"
+              name="year"
+              value={formData.year}
+              onChange={handleChange}
+              required
+            />
+          </div>
 
-        <div className="add-form-container">
-          <label htmlFor="language">Language:</label>
-          <input
-            type="text"
-            id="language"
-            name="language"
-            value={formData.language}
-            onChange={handleChange}
-            required
-          />
-        </div>
-        <div className="add-form-container">
-          <label htmlFor="link">Link:</label>
-          <input
-            type="text"
-            id="link"
-            name="link"
-            value={formData.link}
-            onChange={handleChange}
-            required
-          />
-        </div>
-        <div className="add-form-container">
-          <label htmlFor="pages">Pages:</label>
-          <input
-            type="text"
-            id="pages"
-            name="pages"
-            value={formData.pages}
-            onChange={handleChange}
-            required
-          />
-        </div>
-        <div className="add-form-container">
-          <label htmlFor="country">Country:</label>
-          <input
-            type="text"
-            id="country"
-            name="country"
-            value={formData.country}
-            onChange={handleChange}
-            required
-          />
-        </div>
-        <div className="add-form-container">
-          <button disabled={addBook.loading} type="submit">
-            {edit ? "Update" : "Add Data"}
-          </button>
-        </div>
-      </form>
-    </div>
+          <div className="add-form-container">
+            <label htmlFor="language">Language:</label>
+            <input
+              type="text"
+              id="language"
+              name="language"
+              value={formData.language}
+              onChange={handleChange}
+              required
+            />
+          </div>
+          <div className="add-form-container">
+            <label htmlFor="link">Link:</label>
+            <input
+              type="text"
+              id="link"
+              name="link"
+              value={formData.link}
+              onChange={handleChange}
+              required
+            />
+          </div>
+          <div className="add-form-container">
+            <label htmlFor="pages">Pages:</label>
+            <input
+              type="text"
+              id="pages"
+              name="pages"
+              value={formData.pages}
+              onChange={handleChange}
+              required
+            />
+          </div>
+          <div className="add-form-container">
+            <label htmlFor="country">Country:</label>
+            <input
+              type="text"
+              id="country"
+              name="country"
+              value={formData.country}
+              onChange={handleChange}
+              required
+            />
+          </div>
+          <div className="add-form-container" style={{ display: "flex" }}>
+            <button disabled={addBook.loading} type="submit">
+              {edit ? "Update" : "Add Data"}
+            </button>
+            <button
+              onClick={() => navigate(-1)}
+              style={{
+                marginBlock: "10px",
+                backgroundColor: "transparent",
+                color: "gray",
+              }}
+            >
+              Cancel
+            </button>
+          </div>
+        </form>
+      </div>
+    </>
   );
 }
