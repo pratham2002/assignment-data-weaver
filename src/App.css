@@ -4,7 +4,7 @@
 }
 .search-section {
   margin-block: 20px;
-  padding-inline: 40px;
+  padding-inline: 1%;
   display: flex;
   gap: 16px;
   align-items: center;
@@ -12,7 +12,11 @@
 }
 .searchBar {
   height: 40px;
-  width: 400px;
+  width: 85%;
+  border-radius: 5px;
+}
+.pageSize {
+  height: 45px;
   border-radius: 5px;
 }
 

@@ -24,12 +24,35 @@ export default function Homepage() {
     <div>
       <TopBar />
       <div className="search-section">
-        <input
-          className="searchBar"
-          placeholder="Enter title"
-          value={searchText}
-          onChange={(e) => setSearchText(e.target.value)}
-        />
+        <div
+          style={{
+            width: "40%",
+            minWidth: "250px",
+            display: "flex",
+            alignItems: "center",
+          }}
+        >
+          <label>Title:</label>
+          <input
+            className="searchBar"
+            placeholder="Enter title"
+            value={searchText}
+            onChange={(e) => setSearchText(e.target.value)}
+          />
+        </div>
+        <div>
+          <label>Page Size:</label>
+          <select
+            className="pageSize"
+            value={pageSize}
+            onChange={(e) => setPageSize(e.target.value)}
+          >
+            <option value={5}>5</option>
+            <option value={10}>10</option>
+            <option value={15}>15</option>
+            <option value={20}>20</option>
+          </select>
+        </div>
         <button onClick={handleSearch} className="searchButton">
           Search
         </button>
