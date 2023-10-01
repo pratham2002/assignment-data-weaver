@@ -1,6 +1,9 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
 
 function BookItem({ book }) {
+  const navigate = useNavigate();
+
   return (
     <div className="book-card">
       <h2>{book?.title ?? "NA"}</h2>
@@ -33,6 +36,17 @@ function BookItem({ book }) {
       <p>
         <strong>Year:</strong> {book?.year ?? "NA"}
       </p>
+      <button
+        onClick={() => {
+          navigate("/edit", {
+            state: {
+              data: book,
+            },
+          });
+        }}
+      >
+        Edit
+      </button>
     </div>
   );
 }

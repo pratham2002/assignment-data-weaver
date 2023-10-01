@@ -1,5 +1,6 @@
 import {
   ADD_BOOK_FAILURE,
+  ADD_BOOK_INIT,
   ADD_BOOK_REQUEST,
   ADD_BOOK_SUCCESS,
 } from "../actions/addBookActions";
@@ -11,6 +12,8 @@ const initialState = {
 
 const addBookReducer = (state = initialState, action) => {
   switch (action.type) {
+    case ADD_BOOK_INIT:
+      return initialState;
     case ADD_BOOK_REQUEST:
       return {
         ...state,

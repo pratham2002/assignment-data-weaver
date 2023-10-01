@@ -1,11 +1,16 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import "../css/addData.css";
-import { addData } from "../redux/actions/addBookActions";
+import {
+  addBookInit,
+  addData,
+  updateBook,
+} from "../redux/actions/addBookActions";
 
 export default function AddBook({ edit }) {
   const addBook = useSelector((state) => state.addBook);
+  const location = useLocation();
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const [formData, setFormData] = useState({
@@ -29,12 +34,24 @@ export default function AddBook({ edit }) {
   const handleSubmit = (e) => {
     e.preventDefault();
     console.log({ formData });
-    dispatch(addData(formData));
+    if (edit) {
+      dispatch(updateBook(formData));
+    } else {
+      dispatch(addData(formData));
+    }
   };
+  useEffect(() => {
+    if (edit) {
+      const { data } = location?.state;
+      console.log({ data });
+      setFormData(data);
+    }
+  }, [edit]);
 
   useEffect(() => {
     if (addBook.success) {
-      alert(`Book added successfully`);
+      alert(edit ? "Book Updated" : `Book added successfully`);
+      dispatch(addBookInit());
       navigate("/");
     } else if (addBook.error) {
       alert(addBook.error.message);
@@ -125,7 +142,7 @@ export default function AddBook({ edit }) {
         </div>
         <div className="add-form-container">
           <button disabled={addBook.loading} type="submit">
-            Add Data
+            {edit ? "Update" : "Add Data"}
           </button>
         </div>
       </form>
