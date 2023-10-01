@@ -32,10 +32,11 @@
   background-color: lightgray;
 }
 
-/* Base styles for the book-item component */
-.book-item {
+/* CSS for the book-card component */
+.book-card {
   border: 1px solid #ccc;
   padding: 16px;
+  min-width: 225px;
   margin: 16px;
   background-color: #fff;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
@@ -46,51 +47,51 @@
   transition: transform 0.2s;
 }
 
-.book-item h2 {
+.book-card h2 {
   font-size: 1.5rem;
   margin: 0;
   padding: 0;
   color: #333;
 }
 
-.book-item p {
+.book-card p {
   font-size: 1rem;
   margin: 8px 0;
   padding: 0;
   color: #666;
 }
-.book-item:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+
+.book-card a {
+  color: #0078d4;
+  text-decoration: none;
 }
-/* Responsive styles for smaller screens (e.g., mobile devices) */
+
 @media (max-width: 768px) {
-  .book-item {
+  .book-card {
     padding: 12px;
     margin: 12px;
   }
 
-  .book-item h2 {
+  .book-card h2 {
     font-size: 1.3rem;
   }
 
-  .book-item p {
+  .book-card p {
     font-size: 0.9rem;
   }
 }
 
-/* Responsive styles for even smaller screens (e.g., very small mobile devices) */
 @media (max-width: 480px) {
-  .book-item {
+  .book-card {
     padding: 10px;
     margin: 10px;
   }
 
-  .book-item h2 {
+  .book-card h2 {
     font-size: 1.2rem;
   }
 
-  .book-item p {
+  .book-card p {
     font-size: 0.8rem;
   }
 }

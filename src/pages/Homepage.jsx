@@ -21,9 +21,9 @@ export default function Homepage() {
   }, [searchText, pageSize, page, dispatch]);
 
   useEffect(() => {
-    if (!searchText) {
-      return;
-    }
+    // if (!searchText) {
+    //   return;
+    // }
     dispatch(getBooks({ title: searchText, pageSize, page }));
   }, [page]);
 
@@ -109,7 +109,13 @@ export default function Homepage() {
       >
         {books?.loading && "Loading..."}
       </div>
-      <div>
+      <div
+        style={{
+          display: "flex",
+          justifyContent: "space-evenly",
+          flexWrap: "wrap",
+        }}
+      >
         {books?.results?.data?.map((e) => {
           return <BookItem book={e} />;
         })}
