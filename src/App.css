@@ -32,11 +32,10 @@
   background-color: lightgray;
 }
 
-/* CSS for the book-card component */
 .book-card {
   border: 1px solid #ccc;
   padding: 16px;
-  min-width: 225px;
+  min-width: 200px;
   margin: 16px;
   background-color: #fff;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
@@ -94,4 +93,8 @@
   .book-card p {
     font-size: 0.8rem;
   }
+}
+
+.header-container > img {
+  height: 70px;
 }
