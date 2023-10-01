@@ -1,12 +1,13 @@
 import React, { useCallback, useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
 import BookItem from "../componenets/BookItem";
 import TopBar from "../componenets/TopBar";
 import { getBooks } from "../redux/actions/searchActions";
 
 export default function Homepage() {
   const books = useSelector((state) => state.search);
-
+  const navigate = useNavigate();
   const [searchText, setSearchText] = useState("");
   const [pageSize, setPageSize] = useState(10);
   const [page, setPage] = useState(1);
@@ -70,6 +71,9 @@ export default function Homepage() {
         }}
       >
         <p>Total Results:{books?.results?.pagination?.totalElements}</p>
+        <button onClick={() => navigate("/add")} className="searchButton">
+          Add New Book
+        </button>
       </div>
 
       <div
