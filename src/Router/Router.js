@@ -9,7 +9,7 @@ function Router() {
     <Routes>
       <Route path="/" element={<Homepage />} />
       <Route path="/add" element={<AddBook />} />
-      <Route path="/edit" element={<Homepage />} />
+      <Route path="/edit" element={<AddBook edit={true} />} />
       <Route path="*" element={<Error404Page />} />
     </Routes>
   );

@@ -1,7 +1,13 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
 import "../css/addData.css";
+import { addData } from "../redux/actions/addBookActions";
 
-export default function AddBook() {
+export default function AddBook({ edit }) {
+  const addBook = useSelector((state) => state.addBook);
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
   const [formData, setFormData] = useState({
     author: "",
     country: "",
@@ -10,7 +16,6 @@ export default function AddBook() {
     pages: "",
     title: "",
     year: "",
-    id: "",
   });
 
   const handleChange = (e) => {
@@ -23,18 +28,34 @@ export default function AddBook() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    // You can send the formData to your backend API or store it in your application's state.
-    // Example: You can use Axios to make a POST request to your API endpoint.
-    // axios.post("/api/add-data", formData).then((response) => {
-    //   console.log("Data added successfully:", response.data);
-    // });
-    // After successful submission, you can navigate the user to another page.
+    console.log({ formData });
+    dispatch(addData(formData));
   };
+
+  useEffect(() => {
+    if (addBook.success) {
+      alert(`Book added successfully`);
+      navigate("/");
+    } else if (addBook.error) {
+      alert(addBook.error.message);
+    }
+  }, [addBook]);
 
   return (
     <div className="add-form-container">
       <h2>Add Data</h2>
       <form onSubmit={handleSubmit}>
+        <div className="add-form-container">
+          <label htmlFor="title">Title:</label>
+          <input
+            type="text"
+            id="title"
+            name="title"
+            value={formData.title}
+            onChange={handleChange}
+            required
+          />
+        </div>
         <div className="add-form-container">
           <label htmlFor="author">Author:</label>
           <input
@@ -47,16 +68,17 @@ export default function AddBook() {
           />
         </div>
         <div className="add-form-container">
-          <label htmlFor="country">Country:</label>
+          <label htmlFor="year">Year:</label>
           <input
             type="text"
-            id="country"
-            name="country"
-            value={formData.country}
+            id="year"
+            name="year"
+            value={formData.year}
             onChange={handleChange}
             required
           />
         </div>
+
         <div className="add-form-container">
           <label htmlFor="language">Language:</label>
           <input
@@ -91,40 +113,20 @@ export default function AddBook() {
           />
         </div>
         <div className="add-form-container">
-          <label htmlFor="title">Title:</label>
+          <label htmlFor="country">Country:</label>
           <input
             type="text"
-            id="title"
-            name="title"
-            value={formData.title}
+            id="country"
+            name="country"
+            value={formData.country}
             onChange={handleChange}
             required
           />
         </div>
         <div className="add-form-container">
-          <label htmlFor="year">Year:</label>
-          <input
-            type="text"
-            id="year"
-            name="year"
-            value={formData.year}
-            onChange={handleChange}
-            required
-          />
-        </div>
-        <div className="add-form-container">
-          <label htmlFor="id">ID:</label>
-          <input
-            type="text"
-            id="id"
-            name="id"
-            value={formData.id}
-            onChange={handleChange}
-            required
-          />
-        </div>
-        <div className="add-form-container">
-          <button type="submit">Add Data</button>
+          <button disabled={addBook.loading} type="submit">
+            Add Data
+          </button>
         </div>
       </form>
     </div>
