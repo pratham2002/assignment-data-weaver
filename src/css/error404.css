@@ -1,0 +1,52 @@
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background-color: #f5f5f5;
+}
+
+.centered-content {
+  text-align: center;
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
+
+.error-code {
+  font-size: 80px;
+  color: #6a707e;
+  font-weight: 600;
+}
+
+.error-message {
+  font-size: 24px;
+  color: #0078d4;
+}
+
+img {
+  max-width: 100%;
+  margin-top: 20px;
+}
+
+.button-container {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.mui-button {
+  padding: 10px 20px;
+  background-color: #0078d4;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 16px;
+  margin-right: 10px;
+}
+
+.mui-button:hover {
+  background-color: #005a9e;
+}
