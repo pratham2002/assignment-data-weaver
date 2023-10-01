@@ -38,6 +38,7 @@ body {
 }
 .book-card {
   border: 1px solid #ccc;
+  position: relative;
   padding: 16px;
   min-width: 200px;
   margin: 16px;
