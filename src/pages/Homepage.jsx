@@ -18,7 +18,8 @@ export default function Homepage() {
       alert("Please enter a title");
       return;
     }
-    dispatch(getBooks({ title: searchText, pageSize, page }));
+    setPage(1);
+    dispatch(getBooks({ title: searchText, pageSize, page: 1 }));
   }, [searchText, pageSize, page, dispatch]);
 
   useEffect(() => {
@@ -121,6 +122,7 @@ export default function Homepage() {
             <button
               style={{ height: "fit-content" }}
               onClick={() => {
+                window.scrollTo({ behavior: "smooth", left: 0, top: 0 });
                 setPage((p) => p - 1);
               }}
               disabled={page == 1}
@@ -135,6 +137,7 @@ export default function Homepage() {
             <button
               style={{ height: "fit-content" }}
               onClick={() => {
+                window.scrollTo({ behavior: "smooth", left: 0, top: 0 });
                 setPage((p) => p + 1);
               }}
               disabled={page == books?.results?.pagination?.totalPages}

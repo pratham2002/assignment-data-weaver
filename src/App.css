@@ -36,6 +36,11 @@ body {
 .searchButton:hover {
   background-color: #005a9e;
 }
+button:disabled,
+button:disabled:hover {
+  cursor: default;
+  background-color: gray;
+}
 .book-card {
   border: 1px solid #ccc;
   position: relative;
