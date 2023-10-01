@@ -26,6 +26,13 @@ export default function Homepage() {
     // }
     dispatch(getBooks({ title: searchText, pageSize, page }));
   }, [page]);
+  useEffect(() => {
+    // if (!searchText) {
+    //   return;
+    // }
+    setPage(1);
+    dispatch(getBooks({ title: searchText, pageSize, page: 1 }));
+  }, [pageSize]);
 
   return (
     <div>
@@ -47,19 +54,6 @@ export default function Homepage() {
             value={searchText}
             onChange={(e) => setSearchText(e.target.value)}
           />
-        </div>
-        <div>
-          <label>Page Size:</label>
-          <select
-            className="pageSize"
-            value={pageSize}
-            onChange={(e) => setPageSize(e.target.value)}
-          >
-            <option value={5}>5</option>
-            <option value={10}>10</option>
-            <option value={15}>15</option>
-            <option value={20}>20</option>
-          </select>
         </div>
         <button onClick={handleSearch} className="searchButton">
           Search
@@ -105,6 +99,19 @@ export default function Homepage() {
           flexWrap: "wrap",
         }}
       >
+        <div>
+          <label>Per Page:</label>
+          <select
+            className="pageSize"
+            value={pageSize}
+            onChange={(e) => setPageSize(e.target.value)}
+          >
+            <option value={5}>5</option>
+            <option value={10}>10</option>
+            <option value={15}>15</option>
+            <option value={20}>20</option>
+          </select>
+        </div>
         {books?.results?.pagination?.totalPages > 1 && (
           <div style={{ display: "flex", gap: "5px", alignItems: "center" }}>
             <button
