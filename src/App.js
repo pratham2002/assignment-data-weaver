@@ -1,25 +1,8 @@
-import { useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
 import "./App.css";
-import TopBar from "./componenets/TopBar";
+import Router from "./Router/Router";
 
 function App() {
-  const store = useSelector((state) => state.search);
-  console.log({ store });
-
-  const dispatch = useDispatch();
-
-  useEffect(() => {
-    // dispatch(fetchBooks());
-  }, []);
-
-  return (
-    <div>
-      <TopBar />
-      {/* <SearchBar />
-      <ResultsList /> */}
-    </div>
-  );
+  return <Router />;
 }
 
 export default App;

@@ -20,19 +20,21 @@ export const searchBooksFailure = (error) => ({
   payload: error,
 });
 
-export const getBooks = (params) => (dispatch) => {
+export const getBooks = (params) => async (dispatch) => {
   try {
+    // console.log({ params });
+
+    const url = `http://68.178.162.203:8080/application-test-v1.1/books?title=${params.title}&pageSize=${params.pageSize}&page=${params.page}`;
+
     dispatch(searchBooksRequest());
-    axios
-      .get("http://68.178.162.203:8080/application-test-v1.1/books")
-      .then((res) => {
-        console.log({ res });
-        dispatch(searchBooksSuccess(res?.data?.data));
-      })
-      .catch((err) => {
-        dispatch(searchBooksFailure(err.message));
-      });
+
+    const response = await axios.get(url);
+
+    console.log({ data: response.data });
+
+    dispatch(searchBooksSuccess(response?.data));
   } catch (error) {
     console.log(error);
+    dispatch(searchBooksFailure(error.message));
   }
 };

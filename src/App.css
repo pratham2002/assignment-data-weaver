@@ -2,3 +2,91 @@
   padding-inline: 5px;
   color: #434343;
 }
+.search-section {
+  margin-block: 20px;
+  padding-inline: 40px;
+  display: flex;
+  gap: 16px;
+  align-items: center;
+  flex-wrap: wrap;
+}
+.searchBar {
+  height: 40px;
+  width: 400px;
+  border-radius: 5px;
+}
+
+.searchButton {
+  font-size: medium;
+  padding-inline: 20px;
+  padding-block: 10px;
+  border-radius: 3px;
+  background-color: lightblue;
+  transition: all 0.2s ease;
+}
+.searchButton:active {
+  background-color: lightgray;
+}
+
+/* Base styles for the book-item component */
+.book-item {
+  border: 1px solid #ccc;
+  padding: 16px;
+  margin: 16px;
+  background-color: #fff;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  border-radius: 4px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  transition: transform 0.2s;
+}
+
+.book-item h2 {
+  font-size: 1.5rem;
+  margin: 0;
+  padding: 0;
+  color: #333;
+}
+
+.book-item p {
+  font-size: 1rem;
+  margin: 8px 0;
+  padding: 0;
+  color: #666;
+}
+.book-item:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+/* Responsive styles for smaller screens (e.g., mobile devices) */
+@media (max-width: 768px) {
+  .book-item {
+    padding: 12px;
+    margin: 12px;
+  }
+
+  .book-item h2 {
+    font-size: 1.3rem;
+  }
+
+  .book-item p {
+    font-size: 0.9rem;
+  }
+}
+
+/* Responsive styles for even smaller screens (e.g., very small mobile devices) */
+@media (max-width: 480px) {
+  .book-item {
+    padding: 10px;
+    margin: 10px;
+  }
+
+  .book-item h2 {
+    font-size: 1.2rem;
+  }
+
+  .book-item p {
+    font-size: 0.8rem;
+  }
+}
