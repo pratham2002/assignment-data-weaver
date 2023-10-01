@@ -1,9 +1,10 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import "./App.css";
+import TopBar from "./componenets/TopBar";
 
 function App() {
-  const store = useSelector((state) => state.listBooks);
+  const store = useSelector((state) => state.search);
   console.log({ store });
 
   const dispatch = useDispatch();
@@ -14,8 +15,7 @@ function App() {
 
   return (
     <div>
-      <h2>Book Search App</h2>
-
+      <TopBar />
       {/* <SearchBar />
       <ResultsList /> */}
     </div>
