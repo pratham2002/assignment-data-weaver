@@ -1,4 +1,4 @@
-import React, { useCallback, useState } from "react";
+import React, { useCallback, useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import BookItem from "../componenets/BookItem";
 import TopBar from "../componenets/TopBar";
@@ -19,6 +19,13 @@ export default function Homepage() {
     }
     dispatch(getBooks({ title: searchText, pageSize, page }));
   }, [searchText, pageSize, page, dispatch]);
+
+  useEffect(() => {
+    if (!searchText) {
+      return;
+    }
+    dispatch(getBooks({ title: searchText, pageSize, page }));
+  }, [page]);
 
   return (
     <div>
@@ -57,6 +64,44 @@ export default function Homepage() {
           Search
         </button>
       </div>
+      <hr />
+      <div
+        style={{
+          display: "flex",
+          alignItems: "center",
+          marginBlock: "5px",
+          justifyContent: "space-between",
+          flexWrap: "wrap",
+        }}
+      >
+        <p>Total Results:{books?.results?.pagination?.totalElements}</p>
+        {books?.results?.pagination?.totalPages > 1 && (
+          <div style={{ display: "flex", gap: "5px", alignItems: "center" }}>
+            <button
+              style={{ height: "fit-content" }}
+              onClick={() => {
+                setPage((p) => p - 1);
+              }}
+              disabled={page == 1}
+            >
+              Prev
+            </button>
+
+            <p style={{ fontSize: "14px" }}>{page}</p>
+
+            <button
+              style={{ height: "fit-content" }}
+              onClick={() => {
+                setPage((p) => p + 1);
+              }}
+              disabled={page == books?.results?.pagination?.totalPages}
+            >
+              Next
+            </button>
+          </div>
+        )}
+      </div>
+
       <div
         style={{
           paddingInline: "40px",
